@@ -25,12 +25,8 @@
     "node": "10"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "prop-types": "15.7.2"
-=======
     "prop-types": "15.7.2",
     "react": "16.12.0",
     "react-dom": "16.12.0"
->>>>>>> 5989fa35196d3aa663378992ec5724034b9b43a0
   }
 }
