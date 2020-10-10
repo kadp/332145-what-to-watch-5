@@ -4,7 +4,7 @@ import App from "./components/app/app";
 
 const PromoFilm = {
   genre: `Drama`,
-  releaseDate: `2014`
+  releaseDate: 2014
 };
 
 ReactDom.render(
