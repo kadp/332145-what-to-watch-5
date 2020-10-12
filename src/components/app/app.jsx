@@ -19,15 +19,22 @@ const App = (props) => {
         <Route exact path="/">
           <Main genre={genre} releaseDate={releaseDate} />
         </Route>
-        <Route exact path="/login">
+        <Route path="/login" exact>
           <SingIn />
         </Route>
-        <Route exact path="/mylist">
+        <Route path="/mylist" exact>
           <MyList />
         </Route>
-        <Route exact path="/films/:id?" component={Film} />
-        <Route exact path="/films/:id?/review" component={AddReview} />
-        <Route exact path="/player/:id?" component={Player} />
+        <Route path="/films/:id/review" exact>
+          <AddReview />
+        </Route>
+        // `/films/:id` строкой ниже из-за ключа :id
+        <Route path="/films/:id" >
+          <Film />
+        </Route>
+        <Route path="/player/:id" exact>
+          <Player />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
