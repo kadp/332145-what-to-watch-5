@@ -7,32 +7,32 @@ import MyList from "../my-list/my-list";
 import Film from "../film/film";
 import AddReview from "../add-review/add-review";
 import Player from "../player/player";
-
+import {ROUTER_LINK} from "../../constants.js";
 
 const App = (props) => {
 
   const {genre, releaseDate} = props;
+  const {MAIN, SING_IN, MY_LIST, FILM, ADD_REVIEW, PLAYER} = ROUTER_LINK;
 
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/">
+        <Route exact path={MAIN}>
           <Main genre={genre} releaseDate={releaseDate} />
         </Route>
-        <Route path="/login" exact>
+        <Route path={SING_IN} exact>
           <SingIn />
         </Route>
-        <Route path="/mylist" exact>
+        <Route path={MY_LIST} exact>
           <MyList />
         </Route>
-        <Route path="/films/:id/review" exact>
-          <AddReview />
-        </Route>
-        // `/films/:id` строкой ниже из-за ключа :id
-        <Route path="/films/:id" >
+        <Route path={FILM} exact>
           <Film />
         </Route>
-        <Route path="/player/:id" exact>
+        <Route path={ADD_REVIEW} exact>
+          <AddReview />
+        </Route>
+        <Route path={PLAYER} exact>
           <Player />
         </Route>
       </Switch>
