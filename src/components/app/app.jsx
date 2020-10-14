@@ -7,12 +7,10 @@ import MyList from "../my-list/my-list";
 import Film from "../film/film";
 import AddReview from "../add-review/add-review";
 import Player from "../player/player";
-import {ROUTER_LINK} from "../../constants.js";
 
 const App = (props) => {
 
-  const {genre, releaseDate} = props;
-  const {MAIN, SING_IN, MY_LIST, FILM, ADD_REVIEW, PLAYER} = ROUTER_LINK;
+  const {MAIN, SING_IN, MY_LIST, FILM, ADD_REVIEW, PLAYER, genre, releaseDate} = props;
 
   return (
     <BrowserRouter>
@@ -43,6 +41,12 @@ const App = (props) => {
 App.propTypes = {
   genre: PropTypes.string.isRequired,
   releaseDate: PropTypes.number.isRequired,
+  MAIN: PropTypes.string.isRequired,
+  SING_IN: PropTypes.string.isRequired,
+  MY_LIST: PropTypes.string.isRequired,
+  FILM: PropTypes.string.isRequired,
+  ADD_REVIEW: PropTypes.string.isRequired,
+  PLAYER: PropTypes.string.isRequired,
 };
 
 export default App;
