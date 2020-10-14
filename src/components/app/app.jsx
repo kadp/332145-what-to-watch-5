@@ -10,27 +10,27 @@ import Player from "../player/player";
 
 const App = (props) => {
 
-  const {MAIN, SING_IN, MY_LIST, FILM, ADD_REVIEW, PLAYER, genre, releaseDate} = props;
+  const {routerLink, genre, releaseDate, films} = props;
 
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path={MAIN}>
-          <Main genre={genre} releaseDate={releaseDate} />
+        <Route exact path={routerLink.MAIN}>
+          <Main genre={genre} releaseDate={releaseDate} films={films} />
         </Route>
-        <Route path={SING_IN} exact>
+        <Route path={routerLink.SING_IN} exact>
           <SingIn />
         </Route>
-        <Route path={MY_LIST} exact>
+        <Route path={routerLink.MY_LIST} exact>
           <MyList />
         </Route>
-        <Route path={FILM} exact>
+        <Route path={routerLink.FILM} exact>
           <Film />
         </Route>
-        <Route path={ADD_REVIEW} exact>
+        <Route path={routerLink.ADD_REVIEW} exact>
           <AddReview />
         </Route>
-        <Route path={PLAYER} exact>
+        <Route path={routerLink.PLAYER} exact>
           <Player />
         </Route>
       </Switch>
@@ -41,12 +41,8 @@ const App = (props) => {
 App.propTypes = {
   genre: PropTypes.string.isRequired,
   releaseDate: PropTypes.number.isRequired,
-  MAIN: PropTypes.string.isRequired,
-  SING_IN: PropTypes.string.isRequired,
-  MY_LIST: PropTypes.string.isRequired,
-  FILM: PropTypes.string.isRequired,
-  ADD_REVIEW: PropTypes.string.isRequired,
-  PLAYER: PropTypes.string.isRequired,
+  routerLink: PropTypes.object.isRequired,
+  films: PropTypes.array.isRequired,
 };
 
 export default App;
