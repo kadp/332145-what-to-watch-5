@@ -10,25 +10,25 @@ import Player from "../player/player";
 
 const App = (props) => {
 
-  const {routerLink, genre, releaseDate, films} = props;
+  const {routerLink, genre, releaseDate, films, reviews} = props;
 
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path={routerLink.MAIN}>
+        <Route path={routerLink.MAIN} exact>
           <Main genre={genre} releaseDate={releaseDate} films={films} />
         </Route>
         <Route path={routerLink.SING_IN} exact>
           <SingIn />
         </Route>
         <Route path={routerLink.MY_LIST} exact>
-          <MyList />
+          <MyList films={films} />
         </Route>
         <Route path={routerLink.FILM} exact>
           <Film />
         </Route>
         <Route path={routerLink.ADD_REVIEW} exact>
-          <AddReview />
+          <AddReview reviews={reviews} />
         </Route>
         <Route path={routerLink.PLAYER} exact>
           <Player />
@@ -43,6 +43,7 @@ App.propTypes = {
   releaseDate: PropTypes.number.isRequired,
   routerLink: PropTypes.object.isRequired,
   films: PropTypes.array.isRequired,
+  reviews: PropTypes.array.isRequired,
 };
 
 export default App;
