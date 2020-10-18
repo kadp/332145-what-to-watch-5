@@ -1,20 +1,21 @@
 import React, {Fragment, PureComponent} from "react";
 import ReviewList from "../review-list/review-list";
+import AddNewReview from "../add-new-review/add-new-review";
 import PropTypes from "prop-types";
 
-
+// Весь модуль перерисовывается?
 class AddReview extends PureComponent {
   constructor(props) {
     super(props);
   }
   render() {
-    const {reviews} = this.props;
+    const {movie} = this.props;
     return (
       <Fragment>
         <section className="movie-card movie-card--full">
           <div className="movie-card__hero">
             <div className="movie-card__bg">
-              <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+              <img src={movie.poster} alt={movie.title} />
             </div>
 
             <h1 className="visually-hidden">WTW</h1>
@@ -37,10 +38,10 @@ class AddReview extends PureComponent {
 
             <div className="movie-card__wrap">
               <div className="movie-card__desc">
-                <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+                <h2 className="movie-card__title">{movie.title}</h2>
                 <p className="movie-card__meta">
-                  <span className="movie-card__genre">Drama</span>
-                  <span className="movie-card__year">2014</span>
+                  <span className="movie-card__genre">{movie.genre[0]}</span>
+                  <span className="movie-card__year">{movie.year}</span>
                 </p>
 
                 <div className="movie-card__buttons">
@@ -65,7 +66,7 @@ class AddReview extends PureComponent {
           <div className="movie-card__wrap movie-card__translate-top">
             <div className="movie-card__info">
               <div className="movie-card__poster movie-card__poster--big">
-                <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+                <img src={movie.poster} alt={movie.title} width="218" height="327" />
               </div>
 
               <div className="movie-card__desc">
@@ -84,10 +85,9 @@ class AddReview extends PureComponent {
                 </nav>
 
                 <div className="movie-card__reviews movie-card__row">
-                  <div className="movie-card__reviews-col">
-                    <ReviewList reviews={reviews}/>
-                  </div>
+                  <ReviewList reviews={movie.reviews}/>
                 </div>
+                <AddNewReview />
               </div>
             </div>
           </div>
@@ -156,6 +156,6 @@ class AddReview extends PureComponent {
 }
 
 AddReview.propTypes = {
-  reviews: PropTypes.array.isRequired,
+  movie: PropTypes.object.isRequired,
 };
 export default AddReview;

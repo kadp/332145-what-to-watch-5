@@ -1,16 +1,16 @@
 import React from "react";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
-import PropTypes from "prop-types";
 import Main from "../main/main";
 import SingIn from "../sing-in/sing-in";
 import MyList from "../my-list/my-list";
 import Film from "../film/film";
 import AddReview from "../add-review/add-review";
 import Player from "../player/player";
+import {AppV} from "../../types/films";
 
 const App = (props) => {
 
-  const {routerLink, genre, releaseDate, films, reviews} = props;
+  const {routerLink, genre, releaseDate, films} = props;
 
   return (
     <BrowserRouter>
@@ -25,25 +25,19 @@ const App = (props) => {
           <MyList films={films} />
         </Route>
         <Route path={routerLink.FILM} exact>
-          <Film />
+          <Film movie={films[0]} />
         </Route>
         <Route path={routerLink.ADD_REVIEW} exact>
-          <AddReview reviews={reviews} />
+          <AddReview movie={films[0]} />
         </Route>
         <Route path={routerLink.PLAYER} exact>
-          <Player />
+          <Player movie={films[0]} />
         </Route>
       </Switch>
     </BrowserRouter>
   );
 };
 
-App.propTypes = {
-  genre: PropTypes.string.isRequired,
-  releaseDate: PropTypes.number.isRequired,
-  routerLink: PropTypes.object.isRequired,
-  films: PropTypes.array.isRequired,
-  reviews: PropTypes.array.isRequired,
-};
+App.propTypes = AppV;
 
 export default App;
