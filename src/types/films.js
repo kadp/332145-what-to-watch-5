@@ -1,13 +1,7 @@
 import PropTypes from "prop-types";
 
-export const AppV = {
-  genre: PropTypes.string.isRequired,
-  releaseDate: PropTypes.number.isRequired,
-  routerLink: PropTypes.object.isRequired,
-  films: PropTypes.array.isRequired,
-};
 
-export const Types = {
+export const MovieType = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   genre: PropTypes.array.isRequired,
@@ -18,7 +12,7 @@ export const Types = {
   score: PropTypes.string.isRequired,
   level: PropTypes.string.isRequired,
   count: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.array.isRequired,
   director: PropTypes.array.isRequired,
   starring: PropTypes.array.isRequired,
   duration: PropTypes.string.isRequired,

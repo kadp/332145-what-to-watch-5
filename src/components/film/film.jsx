@@ -1,9 +1,11 @@
 import React, {Fragment} from "react";
+import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
+import {MovieType} from "../../types/films";
 
 
 const Film = (props) => {
-  const {movie} = props;
+  const {movie, routerLink} = props;
   const genre = movie.genre.join(` `);
   const starring = movie.starring.join(` `);
 
@@ -54,7 +56,7 @@ const Film = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                <Link to={routerLink.ADD_REVIEW} className="btn movie-card__button">Add review</Link>
               </div>
             </div>
           </div>
@@ -70,13 +72,13 @@ const Film = (props) => {
               <nav className="movie-nav movie-card__nav">
                 <ul className="movie-nav__list">
                   <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">Overview</a>
+                    <Link to={routerLink.FILM} className="movie-nav__link">Overview</Link>
                   </li>
                   <li className="movie-nav__item">
                     <a href="#" className="movie-nav__link">Details</a>
                   </li>
                   <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Reviews</a>
+                    <Link to={routerLink.ADD_REVIEW} className="movie-nav__link">Reviews</Link>
                   </li>
                 </ul>
               </nav>
@@ -90,7 +92,8 @@ const Film = (props) => {
               </div>
 
               <div className="movie-card__text">
-                <p>{movie.description}</p>
+
+                {movie.description.map((text, i) => <p key={i}>{text}</p>)}
 
                 <p className="movie-card__director"><strong>Director: {movie.director}</strong></p>
 
@@ -163,7 +166,8 @@ const Film = (props) => {
 };
 
 Film.propTypes = {
-  movie: PropTypes.object.isRequired,
+  routerLink: PropTypes.object.isRequired,
+  movie: PropTypes.shape(MovieType).isRequired,
 };
 
 export default Film;

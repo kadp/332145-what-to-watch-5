@@ -28,11 +28,5 @@ export default [
     author: `Paula Fleri-Soler`,
     date: `December 20, 2016`,
     raiting: `7,0`,
-  },
-  {
-    text: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.`,
-    author: `Amanda Greever`,
-    date: `November 18, 2015`,
-    raiting: `8,0`,
   }
 ];

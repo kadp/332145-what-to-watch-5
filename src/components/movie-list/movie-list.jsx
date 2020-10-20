@@ -6,15 +6,15 @@ import Card from "../card/card";
 class MovieList extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.onhandleCardonMouseOver = this.handleCardonMouseOver.bind(this);
+    this.state = {currentId: null};
+    this.onHandleCardonMouseOver = this.handleCardonMouseOver.bind(this);
   }
 
 
   handleCardonMouseOver(e) {
-    console.log(`target id`, e.target.id);
-    this.setState = e.target.id;
-    console.log(`state`, this.state);
+    this.setState({
+      currentId: e.target.id
+    });
   }
 
   render() {
@@ -22,7 +22,7 @@ class MovieList extends PureComponent {
 
     return (
       <Fragment>
-        {films.map((film, i) => <Card key={film + i} id={film.id} title={film.title} poster={film.poster} hover={this.onhandleCardonMouseOver}/>)}
+        {films.map((film) => <Card key={film.id} id={film.id} title={film.title} poster={film.poster} onHover={this.onHandleCardonMouseOver}/>)}
       </Fragment>
     );
   }

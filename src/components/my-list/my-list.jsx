@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import MovieList from "../movie-list/movie-list";
+import {MovieType} from "../../types/films";
 
 const MyList = (props) => {
   const {films} = props;
@@ -51,7 +52,7 @@ const MyList = (props) => {
 };
 
 MyList.propTypes = {
-  films: PropTypes.array.isRequired,
+  films: PropTypes.arrayOf(PropTypes.shape(MovieType)),
 };
 
 export default MyList;

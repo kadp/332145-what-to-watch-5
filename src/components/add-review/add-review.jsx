@@ -1,15 +1,23 @@
 import React, {Fragment, PureComponent} from "react";
+import {Link} from "react-router-dom";
 import ReviewList from "../review-list/review-list";
 import AddNewReview from "../add-new-review/add-new-review";
 import PropTypes from "prop-types";
+import {MovieType} from "../../types/films";
 
-// Весь модуль перерисовывается?
 class AddReview extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.addNewReview = this.onAddNewReview.bind(this);
   }
+
+  onAddNewReview(newReview) {
+    this.props.movie.reviews.push(newReview);
+  }
+
   render() {
-    const {movie} = this.props;
+    const {movie, routerLink} = this.props;
     return (
       <Fragment>
         <section className="movie-card movie-card--full">
@@ -57,7 +65,7 @@ class AddReview extends PureComponent {
                     </svg>
                     <span>My list</span>
                   </button>
-                  <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                  <Link to={routerLink.ADD_REVIEW} className="btn movie-card__button">Add review</Link>
                 </div>
               </div>
             </div>
@@ -73,13 +81,13 @@ class AddReview extends PureComponent {
                 <nav className="movie-nav movie-card__nav">
                   <ul className="movie-nav__list">
                     <li className="movie-nav__item">
-                      <a href="#" className="movie-nav__link">Overview</a>
+                      <Link to={routerLink.FILM} className="movie-nav__link">Overview</Link>
                     </li>
                     <li className="movie-nav__item">
                       <a href="#" className="movie-nav__link">Details</a>
                     </li>
                     <li className="movie-nav__item movie-nav__item--active">
-                      <a href="#" className="movie-nav__link">Reviews</a>
+                      <Link to={routerLink.ADD_REVIEW} className="movie-nav__link">Reviews</Link>
                     </li>
                   </ul>
                 </nav>
@@ -87,10 +95,10 @@ class AddReview extends PureComponent {
                 <div className="movie-card__reviews movie-card__row">
                   <ReviewList reviews={movie.reviews}/>
                 </div>
-                <AddNewReview />
               </div>
             </div>
           </div>
+          <AddNewReview onAddNewReview={this.addNewReview}/>
         </section>
 
         <div className="page-content">
@@ -156,6 +164,7 @@ class AddReview extends PureComponent {
 }
 
 AddReview.propTypes = {
-  movie: PropTypes.object.isRequired,
+  routerLink: PropTypes.object.isRequired,
+  movie: PropTypes.shape(MovieType).isRequired,
 };
 export default AddReview;

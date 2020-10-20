@@ -13,7 +13,7 @@ const ReviewList = (props) => {
       <div className="movie-card__reviews-col">
         {firstColReviews.map((review, i) => (
           <Review
-            key={review + i}
+            key={i}
             text={review.text}
             author={review.author}
             date={review.date}
@@ -24,7 +24,7 @@ const ReviewList = (props) => {
       <div className="movie-card__reviews-col">
         {secondColReviews.map((review, i) => (
           <Review
-            key={review + i}
+            key={i}
             text={review.text}
             author={review.author}
             date={review.date}

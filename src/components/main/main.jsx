@@ -1,7 +1,7 @@
 import React, {Fragment, PureComponent} from "react";
 import PropTypes from "prop-types";
 import MovieList from "../movie-list/movie-list";
-
+import {MovieType} from "../../types/films";
 
 class Main extends PureComponent {
   constructor(props) {
@@ -135,7 +135,7 @@ class Main extends PureComponent {
 Main.propTypes = {
   genre: PropTypes.string.isRequired,
   releaseDate: PropTypes.number.isRequired,
-  films: PropTypes.array.isRequired,
+  films: PropTypes.arrayOf(PropTypes.shape(MovieType)),
 };
 
 export default Main;
