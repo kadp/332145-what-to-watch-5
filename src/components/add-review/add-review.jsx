@@ -9,11 +9,17 @@ class AddReview extends PureComponent {
   constructor(props) {
     super(props);
 
+    const {movie} = this.props;
+
+    this.state = {reviews: movie.reviews};
+
     this.addNewReview = this.onAddNewReview.bind(this);
   }
 
   onAddNewReview(newReview) {
-    this.props.movie.reviews.push(newReview);
+    this.setState({
+      reviews: this.state.reviews.concat([newReview])
+    });
   }
 
   render() {
@@ -93,7 +99,7 @@ class AddReview extends PureComponent {
                 </nav>
 
                 <div className="movie-card__reviews movie-card__row">
-                  <ReviewList reviews={movie.reviews}/>
+                  <ReviewList reviews={this.state.reviews}/>
                 </div>
               </div>
             </div>
