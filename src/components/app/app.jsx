@@ -1,39 +1,38 @@
 import React from "react";
-import {BrowserRouter, Switch, Route} from "react-router-dom";
 import PropTypes from "prop-types";
+import {BrowserRouter, Switch, Route} from "react-router-dom";
 import Main from "../main/main";
 import SingIn from "../sing-in/sing-in";
 import MyList from "../my-list/my-list";
 import Film from "../film/film";
 import AddReview from "../add-review/add-review";
 import Player from "../player/player";
-import {ROUTER_LINK} from "../../constants.js";
+import {MovieType} from "../../types/films";
 
 const App = (props) => {
 
-  const {genre, releaseDate} = props;
-  const {MAIN, SING_IN, MY_LIST, FILM, ADD_REVIEW, PLAYER} = ROUTER_LINK;
+  const {routerLink, genre, releaseDate, films} = props;
 
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path={MAIN}>
-          <Main genre={genre} releaseDate={releaseDate} />
+        <Route path={routerLink.MAIN} exact>
+          <Main genre={genre} releaseDate={releaseDate} films={films} />
         </Route>
-        <Route path={SING_IN} exact>
+        <Route path={routerLink.SING_IN} exact>
           <SingIn />
         </Route>
-        <Route path={MY_LIST} exact>
-          <MyList />
+        <Route path={routerLink.MY_LIST} exact>
+          <MyList films={films} />
         </Route>
-        <Route path={FILM} exact>
-          <Film />
+        <Route path={routerLink.FILM} exact>
+          <Film movie={films[0]} routerLink={routerLink} />
         </Route>
-        <Route path={ADD_REVIEW} exact>
-          <AddReview />
+        <Route path={routerLink.ADD_REVIEW} exact>
+          <AddReview movie={films[0]} routerLink={routerLink} />
         </Route>
-        <Route path={PLAYER} exact>
-          <Player />
+        <Route path={routerLink.PLAYER} exact>
+          <Player movie={films[0]} />
         </Route>
       </Switch>
     </BrowserRouter>
@@ -41,8 +40,10 @@ const App = (props) => {
 };
 
 App.propTypes = {
+  routerLink: PropTypes.object.isRequired,
   genre: PropTypes.string.isRequired,
   releaseDate: PropTypes.number.isRequired,
+  films: PropTypes.arrayOf(PropTypes.shape(MovieType)),
 };
 
 export default App;
