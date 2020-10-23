@@ -4,7 +4,7 @@ import Review from "../review/review";
 
 const ReviewList = (props) => {
   const {reviews} = props;
-  // todo: 1) reviews > 10. 2) нечетное кол-во.
+
   const firstColReviews = [];
   const secondColReviews = [];
 
@@ -18,9 +18,9 @@ const ReviewList = (props) => {
   return (
     <Fragment>
       <div className="movie-card__reviews-col">
-        {firstColReviews.map((review, i) => (
+        {firstColReviews.map((review) => (
           <Review
-            key={i}
+            key={review.date}
             text={review.text}
             author={review.author}
             date={review.date}
@@ -29,9 +29,9 @@ const ReviewList = (props) => {
         ))}
       </div>
       <div className="movie-card__reviews-col">
-        {secondColReviews.map((review, i) => (
+        {secondColReviews.map((review) => (
           <Review
-            key={i}
+            key={review.date}
             text={review.text}
             author={review.author}
             date={review.date}
