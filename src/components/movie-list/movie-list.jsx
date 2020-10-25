@@ -14,8 +14,10 @@ class MovieList extends PureComponent {
   }
 
   handleCardonMouseOver(e) {
-
-    setTimeout(this.setState(() => ({currentId: e.target.id})), 2000);
+    e.persist();
+    setTimeout(() => {
+      this.setState({currentId: e.target.id});
+    }, 1000);
   }
 
   handleCardonMouseOut() {
