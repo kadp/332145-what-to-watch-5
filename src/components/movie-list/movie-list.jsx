@@ -9,12 +9,18 @@ class MovieList extends PureComponent {
     this.state = {currentId: null};
 
     this.onHandleCardonMouseOver = this.handleCardonMouseOver.bind(this);
+    this.onHandleCardonMouseOut = this.handleCardonMouseOut.bind(this);
     this._getIsPreview = this._getIsPreview.bind(this);
   }
 
   handleCardonMouseOver(e) {
+
+    setTimeout(this.setState(() => ({currentId: e.target.id})), 2000);
+  }
+
+  handleCardonMouseOut() {
     this.setState({
-      currentId: e.target.id,
+      currentId: null,
     });
   }
 
@@ -36,6 +42,7 @@ class MovieList extends PureComponent {
             trailer={film.trailer}
             isPreview={this._getIsPreview(film.id)}
             onHover={this.onHandleCardonMouseOver}
+            onOut={this.onHandleCardonMouseOut}
           />
         ))}
       </Fragment>
