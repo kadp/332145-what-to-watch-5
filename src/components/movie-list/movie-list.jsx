@@ -6,27 +6,33 @@ class MovieList extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {currentId: null};
+    this.state = {
+      currentId: null,
+    };
 
+    this.timer = null;
     this.onHandleCardonMouseOver = this.handleCardonMouseOver.bind(this);
     this.onHandleCardonMouseOut = this.handleCardonMouseOut.bind(this);
-    this._getIsPreview = this._getIsPreview.bind(this);
+    this.getIsPreview = this.getIsPreview.bind(this);
   }
 
-  handleCardonMouseOver(e) {
-    e.persist();
-    setTimeout(() => {
-      this.setState({currentId: e.target.id});
-    }, 1000);
+  handleCardonMouseOver(id) {
+    if (this.timer === null) {
+      this.timer = setTimeout(() => {
+        this.setState({currentId: id});
+      }, 1000);
+    }
   }
 
   handleCardonMouseOut() {
     this.setState({
       currentId: null,
     });
+    clearTimeout(this.timer);
+    this.timer = null;
   }
 
-  _getIsPreview(id) {
+  getIsPreview(id) {
     return parseInt(this.state.currentId, 10) === id;
   }
 
@@ -42,7 +48,7 @@ class MovieList extends PureComponent {
             title={film.title}
             poster={film.poster}
             trailer={film.trailer}
-            isPreview={this._getIsPreview(film.id)}
+            isPreview={this.getIsPreview(film.id)}
             onHover={this.onHandleCardonMouseOver}
             onOut={this.onHandleCardonMouseOut}
           />

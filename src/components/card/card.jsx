@@ -10,8 +10,8 @@ const Card = (props) => {
       <PreviewPlayer trailer={trailer} poster={poster} />
     </article>
   ) : (
-    <article className="small-movie-card catalog__movies-card" onMouseOver={onHover}>
-      <div className="small-movie-card__image" id={id} >
+    <article className="small-movie-card catalog__movies-card" onMouseOver={() => onHover(id)} onMouseOut={onOut}>
+      <div className="small-movie-card__image">
         <img src={poster} alt={title} width="280" height="175" />
       </div>
       <h3 className="small-movie-card__title">

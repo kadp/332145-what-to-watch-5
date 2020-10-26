@@ -1,5 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import InputReview from "../input-review/input-review";
+import {RATING} from "../../constants";
 
 class AddNewReview extends PureComponent {
   constructor(props) {
@@ -8,8 +10,8 @@ class AddNewReview extends PureComponent {
     this.state = {
       text: ``,
       author: `currentUser`,
-      date: `December 20, 2016`,
-      raiting: 3,
+      date: `November 27, 2020`,
+      raiting: `3`,
     };
 
     this.handleTextOnChange = this.handleTextOnChange.bind(this);
@@ -35,8 +37,8 @@ class AddNewReview extends PureComponent {
     this.setState({
       text: ``,
       author: `currentUser`,
-      date: `December 20, 2016`,
-      raiting: 3,
+      date: `November 27, 2020`,
+      raiting: `3`,
     });
   }
 
@@ -46,20 +48,7 @@ class AddNewReview extends PureComponent {
         <form action="#" className="add-review__form" onSubmit={this.handleButtonSubmit}>
           <div className="rating">
             <div className="rating__stars">
-              <input className="rating__input" id="star-1" type="radio" name="rating" value="1" checked={this.state.raiting === 1} onChange={this.handleRatingOnChange} />
-              <label className="rating__label" htmlFor="star-1">Rating 1</label>
-
-              <input className="rating__input" id="star-2" type="radio" name="rating" value="2" checked={this.state.raiting === 2} onChange={this.handleRatingOnChange} />
-              <label className="rating__label" htmlFor="star-2">Rating 2</label>
-
-              <input className="rating__input" id="star-3" type="radio" name="rating" value="3" checked={this.state.raiting === 3} onChange={this.handleRatingOnChange} />
-              <label className="rating__label" htmlFor="star-3">Rating 3</label>
-
-              <input className="rating__input" id="star-4" type="radio" name="rating" value="4" checked={this.state.raiting === 4} onChange={this.handleRatingOnChange} />
-              <label className="rating__label" htmlFor="star-4">Rating 4</label>
-
-              <input className="rating__input" id="star-5" type="radio" name="rating" value="5" checked={this.state.raiting === 5} onChange={this.handleRatingOnChange} />
-              <label className="rating__label" htmlFor="star-5">Rating 5</label>
+              {RATING.map((rating) => (<InputReview key={rating} rating={rating} />))}
             </div>
           </div>
 
