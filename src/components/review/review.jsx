@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 const Review = (props) => {
   const {text, author, date, raiting} = props;
+
   return (
     <div className="review">
       <blockquote className="review__quote">

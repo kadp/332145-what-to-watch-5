@@ -9,13 +9,14 @@ class AddNewReview extends PureComponent {
 
     this.state = {
       text: ``,
-      author: `currentUser`,
+      author: `NewUser`,
       date: `November 27, 2020`,
       raiting: `3`,
     };
 
+    this.defaultRating = `3`;
     this.handleTextOnChange = this.handleTextOnChange.bind(this);
-    this.handleRatingOnChange = this.handleRatingOnChange.bind(this);
+    this.onHandleRatingOnChange = this.handleRatingOnChange.bind(this);
     this.handleButtonSubmit = this.handleButtonSubmit.bind(this);
   }
 
@@ -27,7 +28,7 @@ class AddNewReview extends PureComponent {
 
   handleRatingOnChange(e) {
     this.setState({
-      raiting: parseInt(e.target.value, 10)
+      raiting: e.target.value,
     });
   }
 
@@ -36,7 +37,7 @@ class AddNewReview extends PureComponent {
     this.props.onAddNewReview(this.state);
     this.setState({
       text: ``,
-      author: `currentUser`,
+      author: `NewUser`,
       date: `November 27, 2020`,
       raiting: `3`,
     });
@@ -48,7 +49,13 @@ class AddNewReview extends PureComponent {
         <form action="#" className="add-review__form" onSubmit={this.handleButtonSubmit}>
           <div className="rating">
             <div className="rating__stars">
-              {RATING.map((rating) => (<InputReview key={rating} rating={rating} />))}
+              {RATING.map((rating) => (
+                <InputReview
+                  key={rating}
+                  rating={rating}
+                  onChange={this.onHandleRatingOnChange}
+                  сhecked={this.state.raiting}
+                />))}
             </div>
           </div>
 

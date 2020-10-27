@@ -7,4 +7,4 @@ export const ROUTER_LINK = {
   PLAYER: `/player/:id`,
 };
 
-export const RATING = [1, 2, 3, 4, 5];
+export const RATING = [`1`, `2`, `3`, `4`, `5`];
