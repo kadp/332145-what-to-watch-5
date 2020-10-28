@@ -4,16 +4,23 @@ import Review from "../review/review";
 
 const ReviewList = (props) => {
   const {reviews} = props;
-  // todo: 1) reviews > 10. 2) нечетное кол-во.
-  const firstColReviews = reviews.slice(0, 3);
-  const secondColReviews = reviews.slice(3, 6);
 
+  const firstColReviews = [];
+  const secondColReviews = [];
+
+  reviews.forEach((review, i) => {
+    if (i % 2 === 1) {
+      firstColReviews.push(review);
+    } else {
+      secondColReviews.push(review);
+    }
+  });
   return (
     <Fragment>
       <div className="movie-card__reviews-col">
-        {firstColReviews.map((review, i) => (
+        {firstColReviews.map((review) => (
           <Review
-            key={i}
+            key={review.text.length}
             text={review.text}
             author={review.author}
             date={review.date}
@@ -22,9 +29,9 @@ const ReviewList = (props) => {
         ))}
       </div>
       <div className="movie-card__reviews-col">
-        {secondColReviews.map((review, i) => (
+        {secondColReviews.map((review) => (
           <Review
-            key={i}
+            key={review.text.length}
             text={review.text}
             author={review.author}
             date={review.date}
