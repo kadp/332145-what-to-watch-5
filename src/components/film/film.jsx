@@ -2,12 +2,12 @@ import React, {Fragment} from "react";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {MovieType} from "../../types/films";
+import FilmTabs from "../film-tabs/film-tabs";
 
 
 const Film = (props) => {
   const {movie, routerLink} = props;
   const genre = movie.genre.join(` `);
-  const starring = movie.starring.join(` `);
 
   return (
     <Fragment>
@@ -69,36 +69,7 @@ const Film = (props) => {
             </div>
 
             <div className="movie-card__desc">
-              <nav className="movie-nav movie-card__nav">
-                <ul className="movie-nav__list">
-                  <li className="movie-nav__item movie-nav__item--active">
-                    <Link to={routerLink.FILM} className="movie-nav__link">Overview</Link>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Details</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <Link to={routerLink.ADD_REVIEW} className="movie-nav__link">Reviews</Link>
-                  </li>
-                </ul>
-              </nav>
-
-              <div className="movie-rating">
-                <div className="movie-rating__score">{movie.score}</div>
-                <p className="movie-rating__meta">
-                  <span className="movie-rating__level">{movie.level}</span>
-                  <span className="movie-rating__count">{movie.count} ratings</span>
-                </p>
-              </div>
-
-              <div className="movie-card__text">
-
-                {movie.description.map((text, i) => <p key={i}>{text}</p>)}
-
-                <p className="movie-card__director"><strong>Director: {movie.director}</strong></p>
-
-                <p className="movie-card__starring"><strong>Starring: {starring}</strong></p>
-              </div>
+              <FilmTabs movie={movie} />
             </div>
           </div>
         </div>

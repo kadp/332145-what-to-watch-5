@@ -101,10 +101,11 @@ class AddReview extends PureComponent {
                 <div className="movie-card__reviews movie-card__row">
                   <ReviewList reviews={this.state.reviews}/>
                 </div>
+                <AddNewReview onAddNewReview={this.addNewReview}/>
               </div>
             </div>
           </div>
-          <AddNewReview onAddNewReview={this.addNewReview}/>
+
         </section>
 
         <div className="page-content">
