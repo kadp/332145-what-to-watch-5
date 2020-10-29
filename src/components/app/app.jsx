@@ -26,7 +26,7 @@ const App = (props) => {
           <MyList films={films} />
         </Route>
         <Route path={routerLink.FILM} exact>
-          <Film movie={films[0]} routerLink={routerLink} />
+          <Film movie={films[0]} films={films} routerLink={routerLink} />
         </Route>
         <Route path={routerLink.ADD_REVIEW} exact>
           <AddReview movie={films[0]} routerLink={routerLink} />

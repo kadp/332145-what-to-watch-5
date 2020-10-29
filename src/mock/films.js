@@ -22,7 +22,7 @@ export default [
   {
     id: 1,
     title: `Доспехи Бога`,
-    genre: [`боевик`, `комедия`, `приключения`],
+    genre: [`комедия`, `приключения`],
     year: 1998,
     trailer: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     myList: false,
