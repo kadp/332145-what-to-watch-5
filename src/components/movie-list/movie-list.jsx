@@ -2,6 +2,7 @@ import React, {Fragment, PureComponent} from "react";
 import PropTypes from "prop-types";
 import Card from "../card/card";
 
+
 class MovieList extends PureComponent {
   constructor(props) {
     super(props);
@@ -11,12 +12,13 @@ class MovieList extends PureComponent {
     };
 
     this.timer = null;
-    this.onHandleCardMouseOver = this.handleCardMouseOver.bind(this);
-    this.onHandleCardMouseOut = this.handleCardMouseOut.bind(this);
+    this.onHandleCardMouseOver = this.onHandleCardMouseOver.bind(this);
+    this.onHandleCardMouseOut = this.onHandleCardMouseOut.bind(this);
+    this.onHandleCardClick = this.onHandleCardClick.bind(this);
     this.getIsPreview = this.getIsPreview.bind(this);
   }
 
-  handleCardMouseOver(id) {
+  onHandleCardMouseOver(id) {
     if (this.timer === null) {
       this.timer = setTimeout(() => {
         this.setState({currentId: id});
@@ -24,12 +26,17 @@ class MovieList extends PureComponent {
     }
   }
 
-  handleCardMouseOut() {
+  onHandleCardMouseOut() {
     this.setState({
       currentId: null,
     });
     clearTimeout(this.timer);
     this.timer = null;
+  }
+
+  onHandleCardClick(id) {
+    // eslint-disable-next-line no-console
+    console.log(`cardId`, id, typeof id);
   }
 
   getIsPreview(id) {
@@ -51,6 +58,7 @@ class MovieList extends PureComponent {
             isPreview={this.getIsPreview(film.id)}
             onHover={this.onHandleCardMouseOver}
             onOut={this.onHandleCardMouseOut}
+            onClick={this.onHandleCardClick}
           />
         ))}
       </Fragment>

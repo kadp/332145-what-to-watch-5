@@ -7,7 +7,7 @@ export default [
     title: `Закусочная на колесах`,
     genre: [`боевик`, `комедия`, `криминал`, `мелодрама`],
     year: 1984,
-    trailer: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    trailer: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4`,
     myList: false,
     poster: `https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/30ba8674-f3fb-4cde-b3cb-185be90af923/300x450`,
     score: `7.8`,

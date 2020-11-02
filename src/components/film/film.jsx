@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 import {MovieType} from "../../types/films";
 import FilmTabs from "../film-tabs/film-tabs";
 import MovieList from "../movie-list/movie-list";
-
+import {ROUTER_LINK} from "../../constants";
 
 const Film = (props) => {
-  const {movie, routerLink, films} = props;
+  const {movie, films} = props;
   const genre = movie.genre[0];
   let sameGenre = [];
 
@@ -65,7 +65,7 @@ const Film = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <Link to={routerLink.ADD_REVIEW} className="btn movie-card__button">Add review</Link>
+                <Link to={ROUTER_LINK.ADD_REVIEW} className="btn movie-card__button">Add review</Link>
               </div>
             </div>
           </div>
@@ -112,7 +112,6 @@ const Film = (props) => {
 };
 
 Film.propTypes = {
-  routerLink: PropTypes.object.isRequired,
   movie: PropTypes.shape(MovieType).isRequired,
   films: PropTypes.arrayOf(PropTypes.shape(MovieType)),
 };
