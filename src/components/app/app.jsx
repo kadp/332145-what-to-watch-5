@@ -5,33 +5,34 @@ import Main from "../main/main";
 import SingIn from "../sing-in/sing-in";
 import MyList from "../my-list/my-list";
 import Film from "../film/film";
-import AddReview from "../add-review/add-review";
+import AddNewReview from "../add-new-review/add-new-review";
 import Player from "../player/player";
 import {MovieType} from "../../types/films";
+import {ROUTER_LINK} from "../../constants";
 
 const App = (props) => {
 
-  const {routerLink, genre, releaseDate, films} = props;
+  const {genre, releaseDate, films} = props;
 
   return (
     <BrowserRouter>
       <Switch>
-        <Route path={routerLink.MAIN} exact>
+        <Route path={ROUTER_LINK.MAIN} exact>
           <Main genre={genre} releaseDate={releaseDate} films={films} />
         </Route>
-        <Route path={routerLink.SING_IN} exact>
+        <Route path={ROUTER_LINK.SING_IN} exact>
           <SingIn />
         </Route>
-        <Route path={routerLink.MY_LIST} exact>
+        <Route path={ROUTER_LINK.MY_LIST} exact>
           <MyList films={films} />
         </Route>
-        <Route path={routerLink.FILM} exact>
-          <Film movie={films[0]} routerLink={routerLink} />
+        <Route path={ROUTER_LINK.FILM} exact>
+          <Film movie={films[0]} films={films} />
         </Route>
-        <Route path={routerLink.ADD_REVIEW} exact>
-          <AddReview movie={films[0]} routerLink={routerLink} />
+        <Route path={ROUTER_LINK.ADD_REVIEW} exact>
+          <AddNewReview movie={films[0]}/>
         </Route>
-        <Route path={routerLink.PLAYER} exact>
+        <Route path={ROUTER_LINK.PLAYER} exact>
           <Player movie={films[0]} />
         </Route>
       </Switch>
@@ -40,7 +41,6 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  routerLink: PropTypes.object.isRequired,
   genre: PropTypes.string.isRequired,
   releaseDate: PropTypes.number.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape(MovieType)),

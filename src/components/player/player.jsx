@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {MovieType} from "../../types/films";
 
+
 const Player = (props) => {
   const {movie} = props;
 

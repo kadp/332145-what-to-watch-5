@@ -5,6 +5,7 @@ export const ROUTER_LINK = {
   FILM: `/films/:id`,
   ADD_REVIEW: `/films/:id/review`,
   PLAYER: `/player/:id`,
+  DETAILS: `/films/:id/details`
 };
 
 export const RATING = [`1`, `2`, `3`, `4`, `5`];
