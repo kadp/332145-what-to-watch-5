@@ -78,7 +78,7 @@ export default [
   {
     id: 4,
     title: `Грань будущего`,
-    genre: [`Боевик`, `фантастика`, `Приключения`],
+    genre: [`Боевик`, `Фантастика`, `Приключения`],
     year: 2014,
     trailer: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     myList: false,
@@ -113,7 +113,7 @@ export default [
   {
     id: 6,
     title: `Иван Васильевич меняет профессию`,
-    genre: [`фантастика`, `Комедия`, `Приключения`],
+    genre: [`Фантастика`, `Комедия`, `Приключения`],
     year: 1973,
     trailer: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     myList: false,

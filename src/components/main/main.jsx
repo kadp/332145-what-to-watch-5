@@ -1,30 +1,16 @@
 import React, {Fragment, PureComponent} from "react";
 import PropTypes from "prop-types";
 import MovieList from "../movie-list/movie-list";
-import {MovieType} from "../../types/films";
 import GenresList from "../genres-list/genres-list";
 
 
 class Main extends PureComponent {
   constructor(props) {
     super(props);
-    this.genresList = [];
-  }
-
-  getGenres(filmsList) {
-    const genresSet = new Set();
-    filmsList.forEach((film) => {
-      film.genre.forEach((genreList) => {
-        genresSet.add(genreList);
-      });
-    });
-    this.genresList = Array.from(genresSet);
-    this.genresList.unshift(`Все жанры`);
   }
 
   render() {
-    const {genre, releaseDate, films} = this.props;
-    this.getGenres(films);
+    const {genre, releaseDate} = this.props;
 
     return (
       <Fragment>
@@ -88,11 +74,11 @@ class Main extends PureComponent {
             <h2 className="catalog__title visually-hidden">Catalog</h2>
 
             <ul className="catalog__genres-list">
-              <GenresList genres={this.genresList}/>
+              <GenresList />
             </ul>
 
             <div className="catalog__movies-list">
-              <MovieList films={films} />
+              <MovieList />
             </div>
 
             <div className="catalog__more">
@@ -122,7 +108,6 @@ class Main extends PureComponent {
 Main.propTypes = {
   genre: PropTypes.string.isRequired,
   releaseDate: PropTypes.number.isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape(MovieType)),
 };
 
 export default Main;

@@ -10,6 +10,7 @@ import Player from "../player/player";
 import {MovieType} from "../../types/films";
 import {ROUTER_LINK} from "../../constants";
 
+
 const App = (props) => {
 
   const {genre, releaseDate, films} = props;

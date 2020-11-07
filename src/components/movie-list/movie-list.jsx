@@ -1,7 +1,7 @@
 import React, {Fragment, PureComponent} from "react";
 import PropTypes from "prop-types";
 import Card from "../card/card";
-
+import {connect} from "react-redux";
 
 class MovieList extends PureComponent {
   constructor(props) {
@@ -70,4 +70,23 @@ MovieList.propTypes = {
   films: PropTypes.array.isRequired,
 };
 
-export default MovieList;
+const mapStateToProps = (state) => {
+  let sameGenre = [];
+
+  if (state.genre === `Все жанры`) {
+    sameGenre = state.films;
+  }
+
+  state.films.forEach((film) => {
+    if (film.genre.includes(state.genre)) {
+      sameGenre.push(film);
+    }
+  });
+
+  return {
+    films: sameGenre,
+  };
+};
+
+export {MovieList};
+export default connect(mapStateToProps)(MovieList);

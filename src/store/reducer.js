@@ -1,52 +1,19 @@
-import {extend} from "../utils";
 import {ActionType} from "../store/action";
-import {films} from "../mock/films";
+import films from "../mock/films";
+import {extend} from "../utils";
 
-let genreList = [];
-
-const getGenres = (films) => {
-  const genresSet = new Set();
-  films.forEach((film) => {
-    film.genre.forEach((genre) => {
-      genresSet.add(genre);
-    })
-  })
-  genreList = Array.from(genresSet);
+export const initialState = {
+  genre: `Все жанры`,
+  films,
 };
 
-
-const initialState = {
-  genre: genreList,
-  listCard: films,
-};
-
-const reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.COMEDIES:
-      return extend(state, {
-        genre: action.payload,
-        listCard: films.
-      });
-    case ActionType.CRIME:
+    case ActionType.CHANGE_GENRE:
       return extend(state, {
         genre: action.payload,
       });
+    default:
+      return state;
   }
-
-  return state;
 };
-
-
-
-
-export {reducer};
-
-const getListCard = (genre) => {
-
-};
-films.forEach((film) => {
-  if (film.genre.includes(genre)) {
-    sameGenre.push(film);
-    sameGenre = sameGenre.slice(0, 4);
-  }
-});

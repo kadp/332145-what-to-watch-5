@@ -1,19 +1,10 @@
 export const ActionType = {
-  ALL_GENRES: `ALL_GENRES`,
-  COMEDIES: `COMEDIES`,
-  CRIME: `CRIME`,
-  DOCUMENTARY: `DOCUMENTARY`,
-  DRAMAS: `DRAMAS`,
-  HORROR: `HORROR`,
-  KIDS_FAMILY: `KIDS_FAMILY`,
-  ROMANCE: `ROMANCE`,
-  SCI_FI: `SCI_FI`,
-  THRILLERS: `THRILLERS`,
+  CHANGE_GENRE: `CHANGE_GENRE`,
 };
 
 export const ActionCreator = {
-  getGenre: () => ({
-    type: ActionType.COMEDIES,
-    payload: `комедия`,
-  })
-}
+  changeGenre: (genre) => ({
+    type: ActionType.CHANGE_GENRE,
+    payload: genre,
+  }),
+};
