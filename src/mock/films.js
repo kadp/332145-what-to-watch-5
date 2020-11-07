@@ -5,7 +5,7 @@ export default [
   {
     id: 0,
     title: `Закусочная на колесах`,
-    genre: [`боевик`, `комедия`, `криминал`, `мелодрама`],
+    genre: [`Боевик`, `Комедия`, `Криминал`, `Мелодрама`],
     year: 1984,
     trailer: `http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4`,
     myList: false,
@@ -22,7 +22,7 @@ export default [
   {
     id: 1,
     title: `Доспехи Бога`,
-    genre: [`комедия`, `приключения`],
+    genre: [`Комедия`, `Приключения`],
     year: 1998,
     trailer: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     myList: false,
@@ -41,7 +41,7 @@ export default [
   {
     id: 2,
     title: `Час пик`,
-    genre: [`боевик`, `комедия`, `триллер`, `криминал`],
+    genre: [`Боевик`, `Комедия`, `Триллер`, `Криминал`],
     year: 1986,
     trailer: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     myList: false,
@@ -60,7 +60,7 @@ export default [
   {
     id: 3,
     title: `Доспехи Бога 2: Операция Кондор`,
-    genre: [`боевик`, `комедия`, `триллер`, `криминал`, `приключения`],
+    genre: [`Боевик`, `Комедия`, `Триллер`, `Криминал`, `Приключения`],
     year: 1991,
     trailer: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     myList: false,
@@ -78,7 +78,7 @@ export default [
   {
     id: 4,
     title: `Грань будущего`,
-    genre: [`боевик`, `фантастик`, `приключения`],
+    genre: [`Боевик`, `Фантастика`, `Приключения`],
     year: 2014,
     trailer: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     myList: false,
@@ -95,7 +95,7 @@ export default [
   {
     id: 5,
     title: `Достучаться до небес`,
-    genre: [`драма`, `комедия`, `криминал`],
+    genre: [`Драма`, `Комедия`, `Криминал`],
     year: 1997,
     trailer: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     myList: false,
@@ -113,7 +113,7 @@ export default [
   {
     id: 6,
     title: `Иван Васильевич меняет профессию`,
-    genre: [`фантастика`, `комедия`, `приключения`],
+    genre: [`Фантастика`, `Комедия`, `Приключения`],
     year: 1973,
     trailer: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     myList: false,
@@ -131,7 +131,7 @@ export default [
   {
     id: 7,
     title: `Леон`,
-    genre: [`боевик`, `триллер`, `драма`, `криминал`],
+    genre: [`Боевик`, `Триллер`, `Драма`, `Криминал`],
     year: 1994,
     trailer: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     myList: false,
