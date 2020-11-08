@@ -2,10 +2,21 @@ import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
+import {DEFAULT_GENRE} from "../../constants";
+import films from "../../mock/films";
+
+const genresSet = new Set();
+films.forEach((film) => {
+  film.genre.forEach((genreList) => {
+    genresSet.add(genreList);
+  });
+});
+const genreList = Array.from(genresSet);
+genreList.unshift(DEFAULT_GENRE);
 
 const GenresList = (props) => {
 
-  const {genre, genreList, onChangeGenre} = props;
+  const {genre, onChangeGenre} = props;
 
   return (
     <Fragment >
@@ -20,24 +31,13 @@ const GenresList = (props) => {
 
 GenresList.propTypes = {
   onChangeGenre: PropTypes.func.isRequired,
-  genreList: PropTypes.array.isRequired,
   genre: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => {
 
-  const genresSet = new Set();
-  state.films.forEach((film) => {
-    film.genre.forEach((genreList) => {
-      genresSet.add(genreList);
-    });
-  });
-  let genreList = Array.from(genresSet);
-  genreList.unshift(`Все жанры`);
-
   return {
     genre: state.genre,
-    genreList,
   };
 };
 

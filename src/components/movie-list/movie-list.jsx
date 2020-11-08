@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Card from "../card/card";
 import {connect} from "react-redux";
 
+
 class MovieList extends PureComponent {
   constructor(props) {
     super(props);
@@ -10,6 +11,7 @@ class MovieList extends PureComponent {
     this.state = {
       currentId: null,
     };
+
 
     this.timer = null;
     this.onHandleCardMouseOver = this.onHandleCardMouseOver.bind(this);
@@ -44,11 +46,11 @@ class MovieList extends PureComponent {
   }
 
   render() {
-    const {films} = this.props;
-
+    const {films, showMoreCount} = this.props;
+    const renderFilms = films.slice(0, showMoreCount);
     return (
       <Fragment>
-        {films.map((film) => (
+        {renderFilms.map((film) => (
           <Card
             key={film.id}
             id={film.id}
@@ -68,25 +70,17 @@ class MovieList extends PureComponent {
 
 MovieList.propTypes = {
   films: PropTypes.array.isRequired,
+  showMoreCount: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = (state) => {
-  let sameGenre = [];
-
-  if (state.genre === `Все жанры`) {
-    sameGenre = state.films;
-  }
-
-  state.films.forEach((film) => {
-    if (film.genre.includes(state.genre)) {
-      sameGenre.push(film);
-    }
-  });
 
   return {
-    films: sameGenre,
+    films: state.films,
+    showMoreCount: state.showMoreCount,
   };
 };
+
 
 export {MovieList};
 export default connect(mapStateToProps)(MovieList);
