@@ -3,11 +3,11 @@ import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {MovieType} from "../../types/films";
 import FilmTabs from "../film-tabs/film-tabs";
-import MovieList from "../movie-list/movie-list";
 import {ROUTER_LINK} from "../../constants";
 
+
 const Film = (props) => {
-  const {movie, films} = props;
+  const {movie, films, renderCard} = props;
   const genre = movie.genre[0];
   let sameGenre = [];
 
@@ -89,7 +89,7 @@ const Film = (props) => {
           <h2 className="catalog__title">More like this</h2>
 
           <div className="catalog__movies-list">
-            <MovieList films={sameGenre}/>
+            {sameGenre.map(renderCard)}
           </div>
         </section>
 
@@ -114,6 +114,7 @@ const Film = (props) => {
 Film.propTypes = {
   movie: PropTypes.shape(MovieType).isRequired,
   films: PropTypes.arrayOf(PropTypes.shape(MovieType)),
+  renderCard: PropTypes.func.isRequired,
 };
 
 export default Film;

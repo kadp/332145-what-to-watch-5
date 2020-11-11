@@ -4,7 +4,9 @@ import MovieList from "../movie-list/movie-list";
 import GenresList from "../genres-list/genres-list";
 import ShowMore from "../show-more/show-more";
 import {connect} from "react-redux";
+import withMovieList from "../../hoc/with-movie-list/with-movie-list";
 
+const MovieListWrapped = withMovieList(MovieList);
 
 class Main extends PureComponent {
   constructor(props) {
@@ -80,7 +82,7 @@ class Main extends PureComponent {
             </ul>
 
             <div className="catalog__movies-list">
-              <MovieList />
+              <MovieListWrapped />
             </div>
 
             {showMoreCount >= films.length ? `` : <ShowMore /> }

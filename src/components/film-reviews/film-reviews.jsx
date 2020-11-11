@@ -1,29 +1,52 @@
-import React, {Fragment, PureComponent} from "react";
-import ReviewList from "../review-list/review-list";
+import React, {Fragment} from "react";
 import PropTypes from "prop-types";
-import {MovieType} from "../../types/films";
+import Review from "../review/review";
 
-class FilmReviews extends PureComponent {
-  constructor(props) {
-    super(props);
+const FilmReviews = (props) => {
+  const {reviews} = props;
 
-    const {movie} = this.props;
+  const firstColReviews = [];
+  const secondColReviews = [];
 
-    this.state = {reviews: movie.reviews};
-  }
-
-  render() {
-    return (
-      <Fragment>
-        <div className="movie-card__reviews movie-card__row">
-          <ReviewList reviews={this.state.reviews}/>
+  reviews.forEach((review, i) => {
+    if (i % 2 === 1) {
+      firstColReviews.push(review);
+    } else {
+      secondColReviews.push(review);
+    }
+  });
+  return (
+    <Fragment>
+      <div className="movie-card__reviews movie-card__row">
+        <div className="movie-card__reviews-col">
+          {firstColReviews.map((review) => (
+            <Review
+              key={review.text.length}
+              text={review.text}
+              author={review.author}
+              date={review.date}
+              raiting={review.raiting}
+            />
+          ))}
         </div>
-      </Fragment>
-    );
-  }
-}
+        <div className="movie-card__reviews-col">
+          {secondColReviews.map((review) => (
+            <Review
+              key={review.text.length}
+              text={review.text}
+              author={review.author}
+              date={review.date}
+              raiting={review.raiting}
+            />
+          ))}
+        </div>
+      </div>
+    </Fragment>
+  );
+};
 
 FilmReviews.propTypes = {
-  movie: PropTypes.shape(MovieType).isRequired,
+  reviews: PropTypes.array.isRequired,
 };
+
 export default FilmReviews;

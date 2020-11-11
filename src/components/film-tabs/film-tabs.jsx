@@ -5,6 +5,7 @@ import FilmOverview from "../film-overview/film-overview";
 import FilmDetails from "../film-details/film-details";
 import FilmReviews from "../film-reviews/film-reviews";
 
+
 class FilmTabs extends PureComponent {
   constructor(props) {
     super(props);
@@ -38,7 +39,7 @@ class FilmTabs extends PureComponent {
   handleReviewsClick(e) {
     e.preventDefault();
     this.setState({
-      currentComponent: <FilmReviews movie={this.props.movie}/>,
+      currentComponent: <FilmReviews reviews={this.props.movie.reviews}/>,
       activeLink: `Reviews`,
     });
   }
