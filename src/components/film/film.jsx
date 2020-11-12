@@ -7,6 +7,7 @@ import {ROUTER_LINK} from "../../constants";
 
 
 const Film = (props) => {
+
   const {movie, films, renderCard} = props;
   const genre = movie.genre[0];
   let sameGenre = [];

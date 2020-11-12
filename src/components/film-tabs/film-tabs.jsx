@@ -11,57 +11,66 @@ class FilmTabs extends PureComponent {
     super(props);
 
     this.state = {
-      currentComponent: <FilmOverview movie={this.props.movie}/>,
       activeLink: `Overview`,
     };
 
-    this.handleOverviewClick = this.handleOverviewClick.bind(this);
-    this.handleDetailsClick = this.handleDetailsClick.bind(this);
-    this.handleReviewsClick = this.handleReviewsClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleOverviewClick(e) {
+  handleClick(e) {
     e.preventDefault();
     this.setState({
-      currentComponent: <FilmOverview movie={this.props.movie}/>,
-      activeLink: `Overview`,
-    });
-  }
-
-  handleDetailsClick(e) {
-    e.preventDefault();
-    this.setState({
-      currentComponent: <FilmDetails movie={this.props.movie}/>,
-      activeLink: `Details`,
-    });
-  }
-
-  handleReviewsClick(e) {
-    e.preventDefault();
-    this.setState({
-      currentComponent: <FilmReviews reviews={this.props.movie.reviews}/>,
-      activeLink: `Reviews`,
+      activeLink: e.target.textContent,
     });
   }
 
   render() {
+    let currentComponent = null;
+    if (this.state.activeLink === `Overview`) {
+      currentComponent = <FilmOverview movie={this.props.movie} />;
+    } else if (this.state.activeLink === `Details`) {
+      currentComponent = <FilmDetails movie={this.props.movie} />;
+    } else if (this.state.activeLink === `Reviews`) {
+      currentComponent = <FilmReviews reviews={this.props.movie.reviews} />;
+    }
+
     return (
       <Fragment>
         <nav className="movie-nav movie-card__nav">
           <ul className="movie-nav__list">
             <li className={`movie-nav__item ${this.state.activeLink === `Overview` ? `movie-nav__item--active` : ``}`}>
-              <a href="#" className="movie-nav__link" onClick={this.handleOverviewClick}>Overview</a>
+              <a
+                href="#"
+                className="movie-nav__link"
+                onClick={this.handleClick}
+              >
+                Overview
+              </a>
             </li>
-            <li className={`movie-nav__item ${this.state.activeLink === `Details` ? `movie-nav__item--active` : ``}`}>
-              <a href="#" className="movie-nav__link" onClick={this.handleDetailsClick}>Details</a>
+            <li
+              className={`movie-nav__item ${this.state.activeLink === `Details` ? `movie-nav__item--active` : ``}`}>
+              <a
+                href="#"
+                className="movie-nav__link"
+                onClick={this.handleClick}
+              >
+                Details
+              </a>
             </li>
-            <li className={`movie-nav__item ${this.state.activeLink === `Reviews` ? `movie-nav__item--active` : ``}`}>
-              <a href="#" className="movie-nav__link" onClick={this.handleReviewsClick}>Reviews</a>
+            <li
+              className={`movie-nav__item ${this.state.activeLink === `Reviews` ? `movie-nav__item--active` : ``}`}>
+              <a
+                href="#"
+                className="movie-nav__link"
+                onClick={this.handleClick}
+              >
+                Reviews
+              </a>
             </li>
           </ul>
         </nav>
 
-        {this.state.currentComponent}
+        {currentComponent}
       </Fragment>
     );
   }
