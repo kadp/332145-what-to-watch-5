@@ -21,7 +21,7 @@ const App = (props) => {
     <BrowserRouter>
       <Switch>
         <Route path={ROUTER_LINK.MAIN} exact>
-          <Main genre={genre} releaseDate={releaseDate} films={films} />
+          <Main genre={genre} releaseDate={releaseDate} />
         </Route>
         <Route path={ROUTER_LINK.SING_IN} exact>
           <SingIn />

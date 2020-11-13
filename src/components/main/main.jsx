@@ -2,8 +2,6 @@ import React, {Fragment, PureComponent} from "react";
 import PropTypes from "prop-types";
 import MovieList from "../movie-list/movie-list";
 import GenresList from "../genres-list/genres-list";
-import ShowMore from "../show-more/show-more";
-import {connect} from "react-redux";
 import withMovieList from "../../hoc/with-movie-list/with-movie-list";
 
 const MovieListWrapped = withMovieList(MovieList);
@@ -14,7 +12,7 @@ class Main extends PureComponent {
   }
 
   render() {
-    const {genre, releaseDate, films, showMoreCount} = this.props;
+    const {genre, releaseDate} = this.props;
 
     return (
       <Fragment>
@@ -81,11 +79,7 @@ class Main extends PureComponent {
               <GenresList />
             </ul>
 
-            <div className="catalog__movies-list">
-              <MovieListWrapped />
-            </div>
-
-            {showMoreCount >= films.length ? `` : <ShowMore /> }
+            <MovieListWrapped />
           </section>
 
           <footer className="page-footer">
@@ -110,17 +104,7 @@ class Main extends PureComponent {
 Main.propTypes = {
   genre: PropTypes.string.isRequired,
   releaseDate: PropTypes.number.isRequired,
-  films: PropTypes.array.isRequired,
-  showMoreCount: PropTypes.number.isRequired,
 };
 
+export default Main;
 
-const mapStateToProps = (state) => {
-  return {
-    films: state.films,
-    showMoreCount: state.showMoreCount,
-  };
-};
-
-export {Main};
-export default connect(mapStateToProps)(Main);

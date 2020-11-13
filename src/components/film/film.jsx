@@ -4,7 +4,9 @@ import PropTypes from "prop-types";
 import {MovieType} from "../../types/films";
 import FilmTabs from "../film-tabs/film-tabs";
 import {ROUTER_LINK} from "../../constants";
+import withFilmTabs from "../../hoc/with-film-tabs/with-film-tabs";
 
+const FilmTabsWrapped = withFilmTabs(FilmTabs);
 
 const Film = (props) => {
 
@@ -79,7 +81,7 @@ const Film = (props) => {
             </div>
 
             <div className="movie-card__desc">
-              <FilmTabs movie={movie} />
+              <FilmTabsWrapped movie={movie} />
             </div>
           </div>
         </div>
