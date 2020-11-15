@@ -5,46 +5,10 @@ import InputReview from "../input-review/input-review";
 import {RATING} from "../../constants";
 
 class AddNewReview extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      text: ``,
-      author: `NewUser`,
-      date: `November 27, 2020`,
-      raiting: `3`,
-    };
-
-    this.defaultRating = `3`;
-    this.handleTextOnChange = this.handleTextOnChange.bind(this);
-    this.onHandleRatingOnChange = this.onHandleRatingOnChange.bind(this);
-    this.handleButtonSubmit = this.handleButtonSubmit.bind(this);
-  }
-
-  handleTextOnChange(e) {
-    this.setState({
-      text: e.target.value
-    });
-  }
-
-  onHandleRatingOnChange(e) {
-    this.setState({
-      raiting: e.target.value,
-    });
-  }
-
-  handleButtonSubmit(e) {
-    e.preventDefault();
-    this.setState({
-      text: ``,
-      author: `NewUser`,
-      date: `November 27, 2020`,
-      raiting: `3`,
-    });
-  }
 
   render() {
-    const {movie} = this.props;
+
+    const {movie, text, raiting, submit, defaultState} = this.props;
 
     return (
       <section className="movie-card movie-card--full">
@@ -88,21 +52,21 @@ class AddNewReview extends PureComponent {
         </div>
 
         <div className="add-review">
-          <form action="#" className="add-review__form" onSubmit={this.handleButtonSubmit}>
+          <form action="#" className="add-review__form" onSubmit={submit}>
             <div className="rating">
               <div className="rating__stars">
                 {RATING.map((rating) => (
                   <InputReview
                     key={rating}
                     rating={rating}
-                    onChange={this.onHandleRatingOnChange}
-                    сhecked={this.state.raiting}
+                    onChange={raiting}
+                    сhecked={defaultState.raiting}
                   />))}
               </div>
             </div>
 
             <div className="add-review__text">
-              <textarea className="add-review__textarea" name="review-text" id="review-text" value={this.state.text} placeholder="Review text" onChange={this.handleTextOnChange}></textarea>
+              <textarea className="add-review__textarea" name="review-text" id="review-text" value={defaultState.text} placeholder="Review text" onChange={text}></textarea>
               <div className="add-review__submit" >
                 <button className="add-review__btn" type="submit">Post</button>
               </div>
@@ -117,6 +81,10 @@ class AddNewReview extends PureComponent {
 
 AddNewReview.propTypes = {
   movie: PropTypes.shape(MovieType).isRequired,
+  defaultState: PropTypes.object.isRequired,
+  text: PropTypes.func.isRequired,
+  raiting: PropTypes.func.isRequired,
+  submit: PropTypes.func.isRequired,
 };
 
 export default AddNewReview;

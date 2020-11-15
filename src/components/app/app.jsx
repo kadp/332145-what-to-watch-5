@@ -10,8 +10,11 @@ import Player from "../player/player";
 import {MovieType} from "../../types/films";
 import {ROUTER_LINK} from "../../constants";
 import withMovieList from "../../hoc/with-movie-list/with-movie-list";
-const FilmWrapped = withMovieList(Film);
+import withAddNewReview from "../../with-add-new-review/with-add-new-review";
 
+
+const FilmWrapped = withMovieList(Film);
+const AddNewReviewWrapped = withAddNewReview(AddNewReview);
 
 const App = (props) => {
 
@@ -33,7 +36,7 @@ const App = (props) => {
           <FilmWrapped movie={films[0]} films={films} />
         </Route>
         <Route path={ROUTER_LINK.ADD_REVIEW} exact>
-          <AddNewReview movie={films[0]}/>
+          <AddNewReviewWrapped movie={films[0]}/>
         </Route>
         <Route path={ROUTER_LINK.PLAYER} exact>
           <Player movie={films[0]} />
