@@ -8,9 +8,8 @@ import withFilmTabs from "../../hoc/with-film-tabs/with-film-tabs";
 
 const FilmTabsWrapped = withFilmTabs(FilmTabs);
 
-const Film = (props) => {
+const Film = ({movie, films, renderCard}) => {
 
-  const {movie, films, renderCard} = props;
   const genre = movie.genre[0];
   let sameGenre = [];
 

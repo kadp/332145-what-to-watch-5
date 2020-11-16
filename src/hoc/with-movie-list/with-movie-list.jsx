@@ -11,13 +11,13 @@ const withMovieList = (Component) => {
       };
 
       this.timer = null;
-      this.onHandleCardMouseOver = this.onHandleCardMouseOver.bind(this);
-      this.onHandleCardMouseOut = this.onHandleCardMouseOut.bind(this);
-      this.onHandleCardClick = this.onHandleCardClick.bind(this);
+      this.handleCardMouseOver = this.handleCardMouseOver.bind(this);
+      this.handleCardMouseOut = this.handleCardMouseOut.bind(this);
+      this.handleCardClick = this.handleCardClick.bind(this);
       this.getIsPreview = this.getIsPreview.bind(this);
     }
 
-    onHandleCardMouseOver(id) {
+    handleCardMouseOver(id) {
       if (this.timer === null) {
         this.timer = setTimeout(() => {
           this.setState({currentId: id});
@@ -25,7 +25,7 @@ const withMovieList = (Component) => {
       }
     }
 
-    onHandleCardMouseOut() {
+    handleCardMouseOut() {
       this.setState({
         currentId: null,
       });
@@ -33,9 +33,9 @@ const withMovieList = (Component) => {
       this.timer = null;
     }
 
-    onHandleCardClick(id) {
-      // eslint-disable-next-line no-console
-      console.log(`cardId`, id, typeof id);
+    // eslint-disable-next-line no-unused-vars
+    handleCardClick(id) {
+
     }
 
     getIsPreview(id) {
@@ -56,9 +56,9 @@ const withMovieList = (Component) => {
                 poster={film.poster}
                 trailer={film.trailer}
                 isPreview={this.getIsPreview(film.id)}
-                onHover={this.onHandleCardMouseOver}
-                onOut={this.onHandleCardMouseOut}
-                onClick={this.onHandleCardClick}
+                onHover={this.handleCardMouseOver}
+                onOut={this.handleCardMouseOut}
+                onClick={this.handleCardClick}
               />
             );
           }}

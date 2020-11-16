@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import {FILM_TABS} from "../../constants";
 
 
 const withFilmTabs = (Component) => {
@@ -6,13 +7,13 @@ const withFilmTabs = (Component) => {
     constructor(props) {
       super(props);
       this.state = {
-        activeLink: `Overview`,
+        activeLink: FILM_TABS.OVERVIEW,
       };
 
-      this.onHandleClick = this.onHandleClick.bind(this);
+      this.handleClick = this.handleClick.bind(this);
     }
 
-    onHandleClick(e) {
+    handleClick(e) {
       e.preventDefault();
       this.setState({
         activeLink: e.target.textContent,
@@ -20,7 +21,7 @@ const withFilmTabs = (Component) => {
     }
 
     render() {
-      return <Component {...this.props} activeLink={this.state.activeLink} onLinkClick={this.onHandleClick}/>;
+      return <Component {...this.props} activeLink={this.state.activeLink} onLinkClick={this.handleClick}/>;
     }
   }
 

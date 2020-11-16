@@ -2,8 +2,7 @@ import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 import Review from "../review/review";
 
-const FilmReviews = (props) => {
-  const {reviews} = props;
+const FilmReviews = ({reviews}) => {
 
   const firstColReviews = [];
   const secondColReviews = [];

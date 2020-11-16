@@ -10,11 +10,12 @@ import Player from "../player/player";
 import {MovieType} from "../../types/films";
 import {ROUTER_LINK} from "../../constants";
 import withMovieList from "../../hoc/with-movie-list/with-movie-list";
-import withAddNewReview from "../../with-add-new-review/with-add-new-review";
+import withAddNewReview from "../../hoc/with-add-new-review/with-add-new-review";
 
 
 const FilmWrapped = withMovieList(Film);
 const AddNewReviewWrapped = withAddNewReview(AddNewReview);
+
 
 const App = (props) => {
 
