@@ -1,86 +1,35 @@
-import React, {Fragment, PureComponent} from "react";
+import React, {Fragment} from "react";
 import PropTypes from "prop-types";
-import Card from "../card/card";
 import {connect} from "react-redux";
+import ShowMore from "../show-more/show-more";
 
+const MovieList = (props) => {
+  const {films, showMoreCount, renderCard} = props;
+  const renderFilmList = films.slice(0, showMoreCount);
 
-class MovieList extends PureComponent {
-  constructor(props) {
-    super(props);
+  return (
+    <Fragment>
+      <div className="catalog__movies-list">
+        {renderFilmList.map(renderCard)}
+      </div>
 
-    this.state = {
-      currentId: null,
-    };
-
-
-    this.timer = null;
-    this.onHandleCardMouseOver = this.onHandleCardMouseOver.bind(this);
-    this.onHandleCardMouseOut = this.onHandleCardMouseOut.bind(this);
-    this.onHandleCardClick = this.onHandleCardClick.bind(this);
-    this.getIsPreview = this.getIsPreview.bind(this);
-  }
-
-  onHandleCardMouseOver(id) {
-    if (this.timer === null) {
-      this.timer = setTimeout(() => {
-        this.setState({currentId: id});
-      }, 1000);
-    }
-  }
-
-  onHandleCardMouseOut() {
-    this.setState({
-      currentId: null,
-    });
-    clearTimeout(this.timer);
-    this.timer = null;
-  }
-
-  onHandleCardClick(id) {
-    // eslint-disable-next-line no-console
-    console.log(`cardId`, id, typeof id);
-  }
-
-  getIsPreview(id) {
-    return parseInt(this.state.currentId, 10) === id;
-  }
-
-  render() {
-    const {films, showMoreCount} = this.props;
-    const renderFilms = films.slice(0, showMoreCount);
-    return (
-      <Fragment>
-        {renderFilms.map((film) => (
-          <Card
-            key={film.id}
-            id={film.id}
-            title={film.title}
-            poster={film.poster}
-            trailer={film.trailer}
-            isPreview={this.getIsPreview(film.id)}
-            onHover={this.onHandleCardMouseOver}
-            onOut={this.onHandleCardMouseOut}
-            onClick={this.onHandleCardClick}
-          />
-        ))}
-      </Fragment>
-    );
-  }
-}
+      {showMoreCount >= films.length ? `` : <ShowMore />}
+    </Fragment>
+  );
+};
 
 MovieList.propTypes = {
   films: PropTypes.array.isRequired,
   showMoreCount: PropTypes.number.isRequired,
+  renderCard: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
-
   return {
     films: state.films,
     showMoreCount: state.showMoreCount,
   };
 };
-
 
 export {MovieList};
 export default connect(mapStateToProps)(MovieList);

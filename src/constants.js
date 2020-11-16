@@ -12,4 +12,4 @@ export const RATING = [`1`, `2`, `3`, `4`, `5`];
 
 export const DEFAULT_GENRE = `Все жанры`;
 
-export const SHOW_MORE_STEP = 2;
+export const SHOW_MORE_STEP = 3;

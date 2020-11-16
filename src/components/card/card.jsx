@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import PreviewPlayer from "../preview-player/preview-player";
 
 const Card = (props) => {
+
   const {title, poster, id, onHover, trailer, isPreview, onOut, onClick} = props;
 
   return isPreview ? (
@@ -22,6 +23,7 @@ const Card = (props) => {
     </article>
   );
 };
+
 
 Card.propTypes = {
   title: PropTypes.string.isRequired,
