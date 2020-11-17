@@ -4,6 +4,7 @@ import MovieList from "../movie-list/movie-list";
 import GenresList from "../genres-list/genres-list";
 import withMovieList from "../../hoc/with-movie-list/with-movie-list";
 
+
 const MovieListWrapped = withMovieList(MovieList);
 
 const Main = ({genre, releaseDate}) => {
