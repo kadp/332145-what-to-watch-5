@@ -13,3 +13,16 @@ export const RATING = [`1`, `2`, `3`, `4`, `5`];
 export const DEFAULT_GENRE = `Все жанры`;
 
 export const SHOW_MORE_STEP = 3;
+
+export const FILM_TABS = {
+  OVERVIEW: `Overview`,
+  DETAILS: `Details`,
+  REVIEWS: `Reviews`,
+};
+
+export const DEFAULT_FORM_REVIEW = {
+  TEXT: ``,
+  AUTHOR: `NewUser`,
+  DATE: `November 27, 2020`,
+  RAITING: `3`,
+};

@@ -2,8 +2,8 @@ import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 import {MovieType} from "../../types/films";
 
-const Details = (props) => {
-  const {movie} = props;
+const Details = ({movie}) => {
+
   return (
     <Fragment>
       <div className="movie-card__text movie-card__row">
