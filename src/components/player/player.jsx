@@ -14,7 +14,7 @@ const Player = ({movie, onFullScreen, onPlayPause, videoRef, currentTime}) => {
         src={movie.trailer}
         className="player__video"
         poster={movie.poster}
-      ></video>
+      />
 
       <Link to={ROUTER_LINK.FILM} type="button" className="player__exit">
         Exit
@@ -27,7 +27,7 @@ const Player = ({movie, onFullScreen, onPlayPause, videoRef, currentTime}) => {
               className="player__progress"
               value="30"
               max="100"
-            ></progress>
+            />
             <div className="player__toggler" style={{left: `30%`}}>
               Toggler
             </div>

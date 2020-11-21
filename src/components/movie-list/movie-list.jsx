@@ -2,6 +2,7 @@ import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import ShowMore from "../show-more/show-more";
+import {getFilmsByGenre} from "./../../selectors/movie-list-by-genre";
 
 const MovieList = ({films, showMoreCount, renderCard}) => {
 
@@ -25,9 +26,10 @@ MovieList.propTypes = {
 };
 
 const mapStateToProps = (state) => {
+
   return {
-    films: state.films,
-    showMoreCount: state.showMoreCount,
+    films: getFilmsByGenre(state),
+    showMoreCount: state.STATEAPP.showMoreCount,
   };
 };
 
