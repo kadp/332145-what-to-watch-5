@@ -2,8 +2,8 @@ import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 
 
-const InputReview = (props) => {
-  const {rating, onChange, сhecked} = props;
+const InputReview = ({rating, onChange, сhecked}) => {
+
   return (
     <Fragment>
       <input className="rating__input" id={`star-${rating}`} type="radio" name="rating" value={rating} onChange={onChange} checked={сhecked === rating} />

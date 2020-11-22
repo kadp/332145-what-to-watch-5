@@ -23,7 +23,7 @@ ShowMore.propTypes = {
 const mapStateToProps = (state) => {
 
   return {
-    showMoreCount: state.showMoreCount,
+    showMoreCount: state.STATEAPP.showMoreCount,
   };
 };
 

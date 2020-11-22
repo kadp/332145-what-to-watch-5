@@ -4,9 +4,8 @@ import {MovieType} from "../../types/films";
 import InputReview from "../input-review/input-review";
 import {RATING} from "../../constants";
 
-const AddNewReview = (props) => {
+const AddNewReview = ({movie}, {onTextChange}, {onRaitingChange}, {onSubmit}, {defaultState}) => {
 
-  const {movie, onTextChange, onRaitingChange, onSubmit, defaultState} = props;
 
   return (
     <section className="movie-card movie-card--full">

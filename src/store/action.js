@@ -2,6 +2,7 @@ export const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   GET_FILMS_BY_GENRE: `GET_FILMS_BY_GENRE`,
   INCREMENT_SHOW_MORE_COUNT: `INCREMENT_SHOW_MORE_COUNT`,
+  LOAD_FILMLIST: `LOAD_FILMLIST`,
 };
 
 export const ActionCreator = {
@@ -18,3 +19,8 @@ export const ActionCreator = {
     payload: showMoreCount,
   })
 };
+
+export const loadFilmList = (filmList) => ({
+  type: ActionType.LOAD_FILMLIST,
+  payload: filmList,
+});

@@ -2,9 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import PreviewPlayer from "../preview-player/preview-player";
 
-const Card = (props) => {
-
-  const {title, poster, id, onHover, trailer, isPreview, onOut, onClick} = props;
+const Card = ({title, poster, id, onHover, trailer, isPreview, onOut, onClick}) => {
 
   return isPreview ? (
     <article className="small-movie-card catalog__movies-card" onMouseOut={onOut}>

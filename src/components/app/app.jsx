@@ -7,19 +7,17 @@ import MyList from "../my-list/my-list";
 import Film from "../film/film";
 import AddNewReview from "../add-new-review/add-new-review";
 import Player from "../player/player";
-import {MovieType} from "../../types/films";
 import {ROUTER_LINK} from "../../constants";
 import withMovieList from "../../hoc/with-movie-list/with-movie-list";
 import withAddNewReview from "../../hoc/with-add-new-review/with-add-new-review";
 import withPlayer from "../../hoc/with-player/with-player";
 
+
 const FilmWrapped = withMovieList(Film);
 const AddNewReviewWrapped = withAddNewReview(AddNewReview);
 const PlayerWrapped = withPlayer(Player);
 
-const App = (props) => {
-
-  const {genre, releaseDate, films} = props;
+const App = ({genre, releaseDate}) => {
 
   return (
     <BrowserRouter>
@@ -31,16 +29,16 @@ const App = (props) => {
           <SingIn />
         </Route>
         <Route path={ROUTER_LINK.MY_LIST} exact>
-          <MyList films={films} />
+          <MyList />
         </Route>
         <Route path={ROUTER_LINK.FILM} exact>
-          <FilmWrapped movie={films[0]} films={films} />
+          <FilmWrapped />
         </Route>
         <Route path={ROUTER_LINK.ADD_REVIEW} exact>
-          <AddNewReviewWrapped movie={films[0]}/>
+          <AddNewReviewWrapped />
         </Route>
         <Route path={ROUTER_LINK.PLAYER} exact>
-          <PlayerWrapped movie={films[0]} />
+          <PlayerWrapped />
         </Route>
       </Switch>
     </BrowserRouter>
@@ -50,7 +48,6 @@ const App = (props) => {
 App.propTypes = {
   genre: PropTypes.string.isRequired,
   releaseDate: PropTypes.number.isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape(MovieType)),
 };
 
 export default App;

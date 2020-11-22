@@ -1,14 +1,12 @@
 import React, {Fragment} from "react";
 import PropTypes from "prop-types";
-import {MovieType} from "../../types/films";
 import {FILM_TABS} from "../../constants";
 import FilmOverview from "../../components/film-overview/film-overview";
 import FilmDetails from "../../components/film-details/film-details";
 import FilmReviews from "../../components/film-reviews/film-reviews";
 
-const FilmTabs = (props) => {
 
-  const {movie, activeLink, onLinkClick} = props;
+const FilmTabs = ({movie, activeLink, onLinkClick}) => {
 
   let currentComponent = null;
   if (activeLink === FILM_TABS.OVERVIEW) {
@@ -45,7 +43,7 @@ const FilmTabs = (props) => {
 };
 
 FilmTabs.propTypes = {
-  movie: PropTypes.shape(MovieType).isRequired,
+  movie: PropTypes.object.isRequired,
   activeLink: PropTypes.string.isRequired,
   onLinkClick: PropTypes.func.isRequired,
 };

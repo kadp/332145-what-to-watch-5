@@ -1,6 +1,6 @@
 import React, {Fragment} from "react";
 import PropTypes from "prop-types";
-import {MovieType} from "../../types/films";
+
 
 const Details = ({movie}) => {
 
@@ -23,17 +23,17 @@ const Details = ({movie}) => {
         <div className="movie-card__text-col">
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Run Time</strong>
-            <span className="movie-card__details-value">{movie.duration}</span>
+            <span className="movie-card__details-value">{movie.run_time}</span>
           </p>
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Genre</strong>
             <span className="movie-card__details-value">
-              {movie.genre.map((genre, i) => <Fragment key={i}>{genre} <br /></Fragment>)}
+              {movie.genre}
             </span>
           </p>
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Released</strong>
-            <span className="movie-card__details-value">{movie.year}</span>
+            <span className="movie-card__details-value">{movie.released}</span>
           </p>
         </div>
       </div>
@@ -42,7 +42,7 @@ const Details = ({movie}) => {
 };
 
 Details.propTypes = {
-  movie: PropTypes.shape(MovieType).isRequired,
+  movie: PropTypes.object.isRequired,
 };
 
 export default Details;

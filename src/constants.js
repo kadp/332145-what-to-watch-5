@@ -10,9 +10,9 @@ export const ROUTER_LINK = {
 
 export const RATING = [`1`, `2`, `3`, `4`, `5`];
 
-export const DEFAULT_GENRE = `Все жанры`;
+export const DEFAULT_GENRE = `All Genres`;
 
-export const SHOW_MORE_STEP = 3;
+export const SHOW_MORE_STEP = 8;
 
 export const FILM_TABS = {
   OVERVIEW: `Overview`,
@@ -25,4 +25,9 @@ export const DEFAULT_FORM_REVIEW = {
   AUTHOR: `NewUser`,
   DATE: `November 27, 2020`,
   RAITING: `3`,
+};
+
+export const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
 };

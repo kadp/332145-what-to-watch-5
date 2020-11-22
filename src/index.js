@@ -1,19 +1,27 @@
 import React from "react";
 import ReactDom from "react-dom";
 import {ROUTER_LINK} from "./constants";
-import films from "./mock/films";
 import reviews from "./mock/reviews";
 import App from "./components/app/app";
-import {createStore} from "redux";
-import {reducer, initialState} from "./store/reducer";
+import {createStore, applyMiddleware} from "redux";
+import rootReducer from "./store/reducers/root-reducer";
 import {Provider} from "react-redux";
+import thunk from "redux-thunk";
+import {createAPI} from "./services/api";
+import {composeWithDevTools} from "redux-devtools-extension";
+import {fetchFilmList} from "./store/api-action";
 
+
+const api = createAPI();
 
 const store = createStore(
-    reducer,
-    initialState,
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+    rootReducer,
+    composeWithDevTools(
+        applyMiddleware(thunk.withExtraArgument(api))
+    )
 );
+
+store.dispatch(fetchFilmList());
 
 const PromoFilm = {
   genre: `Drama`,
@@ -25,7 +33,6 @@ ReactDom.render(
       <App
         genre={PromoFilm.genre}
         releaseDate={PromoFilm.releaseDate}
-        films={films}
         reviews={reviews}
         routerLink={ROUTER_LINK}
       />

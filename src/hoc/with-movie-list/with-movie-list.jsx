@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import Card from "../../components/card/card";
 
+
 const withMovieList = (Component) => {
   class WithMovieList extends PureComponent {
     constructor(props) {
@@ -52,9 +53,9 @@ const withMovieList = (Component) => {
               <Card
                 key={film.id}
                 id={film.id}
-                title={film.title}
-                poster={film.poster}
-                trailer={film.trailer}
+                title={film.name}
+                poster={film.preview_image}
+                trailer={film.preview_video_link}
                 isPreview={this.getIsPreview(film.id)}
                 onHover={this.handleCardMouseOver}
                 onOut={this.handleCardMouseOut}
