@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDom from "react-dom";
-import {ROUTER_LINK} from "./constants";
+import {ROUTER_LINK, AuthorizationStatus} from "./constants";
 import reviews from "./mock/reviews";
 import App from "./components/app/app";
 import {createStore, applyMiddleware} from "redux";
@@ -9,10 +9,13 @@ import {Provider} from "react-redux";
 import thunk from "redux-thunk";
 import {createAPI} from "./services/api";
 import {composeWithDevTools} from "redux-devtools-extension";
-import {fetchFilmList} from "./store/api-action";
+import {fetchFilmList, checkAuth} from "./store/api-action";
+import {requireAuthorization} from "./store/action";
 
 
-const api = createAPI();
+const api = createAPI(
+    () => store.dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH))
+);
 
 const store = createStore(
     rootReducer,
@@ -22,6 +25,7 @@ const store = createStore(
 );
 
 store.dispatch(fetchFilmList());
+store.dispatch(checkAuth());
 
 const PromoFilm = {
   genre: `Drama`,

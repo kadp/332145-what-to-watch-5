@@ -11,6 +11,7 @@ import {ROUTER_LINK} from "../../constants";
 import withMovieList from "../../hoc/with-movie-list/with-movie-list";
 import withAddNewReview from "../../hoc/with-add-new-review/with-add-new-review";
 import withPlayer from "../../hoc/with-player/with-player";
+import PrivateRoute from "../private-route/private-route";
 
 
 const FilmWrapped = withMovieList(Film);
@@ -25,18 +26,14 @@ const App = ({genre, releaseDate}) => {
         <Route path={ROUTER_LINK.MAIN} exact>
           <Main genre={genre} releaseDate={releaseDate} />
         </Route>
-        <Route path={ROUTER_LINK.SING_IN} exact>
-          <SingIn />
-        </Route>
-        <Route path={ROUTER_LINK.MY_LIST} exact>
-          <MyList />
-        </Route>
-        <Route path={ROUTER_LINK.FILM} exact>
-          <FilmWrapped />
-        </Route>
-        <Route path={ROUTER_LINK.ADD_REVIEW} exact>
-          <AddNewReviewWrapped />
-        </Route>
+        <Route path={ROUTER_LINK.SING_IN} exact render={({history}) => <SingIn history={history}/>} />
+
+        <PrivateRoute path={ROUTER_LINK.MY_LIST} exact render={() => <MyList />} />
+
+        <Route path={ROUTER_LINK.FILM} exact render={({match}) => <FilmWrapped id={match.params.id} key={match.params.id} />} />
+
+        <PrivateRoute path={ROUTER_LINK.ADD_REVIEW} exact render={() =><AddNewReviewWrapped />} />
+
         <Route path={ROUTER_LINK.PLAYER} exact>
           <PlayerWrapped />
         </Route>

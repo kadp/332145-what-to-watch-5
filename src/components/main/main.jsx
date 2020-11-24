@@ -3,11 +3,14 @@ import PropTypes from "prop-types";
 import MovieList from "../movie-list/movie-list";
 import GenresList from "../genres-list/genres-list";
 import withMovieList from "../../hoc/with-movie-list/with-movie-list";
-
+import {ROUTER_LINK} from "../../constants";
+import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+import {AuthorizationStatus} from "../../constants";
 
 const MovieListWrapped = withMovieList(MovieList);
 
-const Main = ({genre, releaseDate}) => {
+const Main = ({user, genre, releaseDate}) => {
 
   return (
     <Fragment>
@@ -28,9 +31,13 @@ const Main = ({genre, releaseDate}) => {
           </div>
 
           <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
+            {(user === AuthorizationStatus.NO_AUTH) ?
+              <Link to={ROUTER_LINK.SING_IN} className="user-block__link">Sign in</Link> :
+              <div className="user-block__avatar">
+                <Link to={ROUTER_LINK.MY_LIST}>
+                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                </Link>
+              </div>}
           </div>
         </header>
 
@@ -87,7 +94,7 @@ const Main = ({genre, releaseDate}) => {
           </div>
 
           <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
+            <p>© 2020 What to watch Ltd.</p>
           </div>
         </footer>
       </div>
@@ -98,7 +105,15 @@ const Main = ({genre, releaseDate}) => {
 Main.propTypes = {
   genre: PropTypes.string.isRequired,
   releaseDate: PropTypes.number.isRequired,
+  user: PropTypes.string.isRequired,
 };
 
-export default Main;
+const mapStateToProps = (state) => {
+  return {
+    user: state.USER.authorizationStatus,
+  };
+};
+
+export {Main};
+export default connect(mapStateToProps)(Main);
 

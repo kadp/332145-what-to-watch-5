@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import PreviewPlayer from "../preview-player/preview-player";
+import {Link} from "react-router-dom";
+
 
 const Card = ({title, poster, id, onHover, trailer, isPreview, onOut, onClick}) => {
 
@@ -9,7 +11,7 @@ const Card = ({title, poster, id, onHover, trailer, isPreview, onOut, onClick}) 
       <PreviewPlayer trailer={trailer} poster={poster} />
     </article>
   ) : (
-    <article className="small-movie-card catalog__movies-card" onMouseOver={() => onHover(id)} onMouseOut={onOut} onClick={() => onClick(id)}>
+    <Link to={`/films/${id}`} className="small-movie-card catalog__movies-card" onMouseOver={() => onHover(id)} onMouseOut={onOut} onClick={() => onClick(id)} >
       <div className="small-movie-card__image">
         <img src={poster} alt={title} width="280" height="175" />
       </div>
@@ -18,7 +20,7 @@ const Card = ({title, poster, id, onHover, trailer, isPreview, onOut, onClick}) 
           {title}
         </a>
       </h3>
-    </article>
+    </Link>
   );
 };
 
