@@ -3,6 +3,7 @@ export const ActionType = {
   GET_FILMS_BY_GENRE: `GET_FILMS_BY_GENRE`,
   INCREMENT_SHOW_MORE_COUNT: `INCREMENT_SHOW_MORE_COUNT`,
   LOAD_FILMLIST: `LOAD_FILMLIST`,
+  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
 };
 
 export const ActionCreator = {
@@ -23,4 +24,9 @@ export const ActionCreator = {
 export const loadFilmList = (filmList) => ({
   type: ActionType.LOAD_FILMLIST,
   payload: filmList,
+});
+
+export const requireAuthorization = (status) => ({
+  type: ActionType.REQUIRED_AUTHORIZATION,
+  payload: status,
 });

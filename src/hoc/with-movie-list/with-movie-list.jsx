@@ -34,11 +34,6 @@ const withMovieList = (Component) => {
       this.timer = null;
     }
 
-    // eslint-disable-next-line no-unused-vars
-    handleCardClick(id) {
-
-    }
-
     getIsPreview(id) {
       return parseInt(this.state.currentId, 10) === id;
     }
@@ -59,7 +54,6 @@ const withMovieList = (Component) => {
                 isPreview={this.getIsPreview(film.id)}
                 onHover={this.handleCardMouseOver}
                 onOut={this.handleCardMouseOut}
-                onClick={this.handleCardClick}
               />
             );
           }}

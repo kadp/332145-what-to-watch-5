@@ -118,7 +118,7 @@ const Film = (props) => {
             </div>
 
             <div className="copyright">
-              <p>© 2019 What to watch Ltd.</p>
+              <p>© 2020 What to watch Ltd.</p>
             </div>
           </footer>
         </div>
@@ -133,9 +133,15 @@ Film.propTypes = {
 };
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
+  let movie;
+  state.DATA.films.forEach((film) => {
+    if (film.id === parseInt(props.id, 10)) {
+      movie = film;
+    }
+  });
   return {
-    movie: state.DATA.films[0],
+    movie,
     films: state.DATA.films,
   };
 };
